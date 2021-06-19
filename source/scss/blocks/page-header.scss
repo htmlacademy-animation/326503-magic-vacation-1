@@ -241,25 +241,25 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
+    transition: color 0.35s;
+    overflow: hidden;
 
     &::after {
       content: "";
       position: absolute;
+      right: 0;
       bottom: 0;
-      width: 100%;
+      width: 0;
       height: 2px;
       background-color: $c-light;
-      display: none;
-      left: 0;
+      transition: width 0.35s, background-color 0.35s;
 
       @media (max-width: $tablet) and (orientation: portrait) {
-        left: 0;
         right: 0;
         background-color: $c-dark;
       }
 
       @media (max-width: $mobile) and (orientation: landscape) {
-        left: 0;
         right: 0;
         background-color: $c-dark;
       }
@@ -267,7 +267,8 @@
 
     &.active {
       &::after {
-        display: block;
+        left: 0;
+        width: 100%;
       }
     }
 
@@ -277,7 +278,9 @@
       outline: none;
 
       &::after {
-        opacity: 1;
+        left: 0;
+        right: auto;
+        width: 100%;
         background-color: $c-purple;
       }
     }
