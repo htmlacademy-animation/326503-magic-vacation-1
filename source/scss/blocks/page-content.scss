@@ -10,13 +10,13 @@
   transition: bottom 0.4s $t-long-ease-out;
 }
 
-.screen--story:not(.screen--hidden) + .screen--prizes.active {
+.screen--prizes.screen--hidden.active {
   &~ .page-content__flooding {
      bottom: 0;
   }
 }
 
-.screen--story.screen--hidden + .screen--prizes.active {
+.screen--prizes.active:not(.screen--hidden) {
   &~ .page-content__flooding {
     display: none;
   }
