@@ -1,0 +1,23 @@
+.page-content__flooding {
+  position: absolute;
+  bottom: -100%;
+  right: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $c-dark;
+  z-index: 1;
+  transition: bottom 0.4s $t-long-ease-out;
+}
+
+.screen--prizes.screen--hidden.active {
+  &~ .page-content__flooding {
+     bottom: 0;
+  }
+}
+
+.screen--prizes.active:not(.screen--hidden) {
+  &~ .page-content__flooding {
+    display: none;
+  }
+}

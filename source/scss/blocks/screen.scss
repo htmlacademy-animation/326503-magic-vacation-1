@@ -40,13 +40,12 @@
 
 .screen__footer {
   position: absolute;
-  bottom: 0;
+  bottom: -100%;
   left: 0;
   right: 0;
   color: $c-dark;
   background-color: $c-light;
-  z-index: 1;
-  bottom: -100%;
+  z-index: 2;
   transition: bottom 0.4s $t-long-ease-out;
 
   .dom-loaded & {
