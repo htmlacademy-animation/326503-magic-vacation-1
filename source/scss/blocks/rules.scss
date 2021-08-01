@@ -119,8 +119,8 @@
 
 .rules__item {
   position: relative;
-  margin: 0 0 6.2rem;
-  padding-top: 0.6rem;
+  margin: 0 0 5.2rem;
+  padding-top: 1.6rem;
   padding-left: 6.5rem;
   break-inside: avoid;
 
@@ -131,6 +131,7 @@
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
+    padding-top: 0.6rem;
     margin-bottom: 1rem;
     padding-left: 5rem;
   }
@@ -148,7 +149,7 @@
     content: counter(li);
     counter-increment: li;
     position: absolute;
-    top: 0;
+    top: 1rem;
     left: 0;
     width: 4.5rem;
     height: 4.5rem;
@@ -159,6 +160,8 @@
     border-radius: 50%;
     line-height: 5rem;
     text-align: center;
+    transform: scale(0);
+    animation: growInBounceScale 0.4s forwards;
 
     @media (max-width: $tablet) and (orientation: portrait) {
       top: 1rem;
@@ -177,11 +180,56 @@
     }
   }
 
+  &:nth-child(2) {
+    &::before {
+      animation-delay: 0.2s;
+    }
+  }
+
+  &:nth-child(3) {
+    &::before {
+      animation-delay: 0.4s;
+    }
+  }
+
+  &:nth-child(4) {
+    &::before {
+      animation-delay: 0.6s;
+    }
+  }
+
   p {
     margin: 0;
+    transform: translateX(15%);
+    opacity: 0;
+    animation: fadeInRightToLeft 0.3s forwards;
 
     @media (max-width: $tablet) and (orientation: portrait) {
       min-height: calc(1.4rem * 2.2);
+    }
+  }
+
+  &:nth-child(1) {
+    p {
+      animation-delay: 0.1s;
+    }
+  }
+
+  &:nth-child(2) {
+    p {
+      animation-delay: 0.3s;
+    }
+  }
+
+  &:nth-child(3) {
+    p {
+      animation-delay: 0.5s;
+    }
+  }
+
+  &:nth-child(4) {
+    p {
+      animation-delay: 0.7s;
     }
   }
 }
@@ -191,15 +239,20 @@
   bottom: 6rem;
   right: 5.6rem;
 
+  opacity: 0;
+  color: transparent;
+  animation: growInWidth 0.4s forwards, nameFadeIn 0.2s forwards;
+  animation-delay: 0.8s, 1.1s;
+
   @media (min-width: $stop-scaling) {
     bottom: 60px;
     right: 56px;
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
-    left: 0;
     right: 0;
     bottom: 4rem;
+    animation-name: growInWidthMobile, nameFadeIn;
   }
 
   @media (max-width: $tablet) and (orientation: landscape) {
@@ -209,5 +262,77 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     bottom: 2rem;
     right: 1.5rem;
+    animation-name: growInWidthLandscape, nameFadeIn;
+  }
+}
+
+@keyframes fadeInRightToLeft {
+  0% {
+    transform: translateX(15%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes growInBounceScale { 
+  0% {
+    transform: scale(0);
+  }
+
+  60% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes growInWidth {
+  0% {
+    width: 6rem;
+    opacity: 1;
+  }
+
+  100% {
+    width: calc(12rem + 5.8rem);
+    opacity: 1;
+  }
+}
+
+@keyframes growInWidthMobile {
+  0% {
+    width: 6rem;
+    opacity: 1;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes growInWidthLandscape {
+  0% {
+    width: 6rem;
+    opacity: 1;
+  }
+
+  100% {
+    width: calc(9rem + 2rem);
+    opacity: 1;
+  }
+}
+
+@keyframes nameFadeIn {
+  0% {
+    color: transparent;
+  }
+
+  100% {
+    color: #5f458c;
   }
 }

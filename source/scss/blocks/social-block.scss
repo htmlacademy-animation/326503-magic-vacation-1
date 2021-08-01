@@ -38,7 +38,7 @@
     transition: 0.8s;
 
     .dom-loaded & {
-      animation: growInBounce 0.4s;
+      animation: growInBounceWidth 0.4s;
       width: 100%;
       height: 100%;
     }
@@ -271,7 +271,7 @@
   }
 }
 
-@keyframes growInBounce {
+@keyframes growInBounceWidth {
   0% {
     width: 0;
     height: 0;
