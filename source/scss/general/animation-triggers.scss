@@ -1,0 +1,18 @@
+.animated-text {
+  > span {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+
+    > span {
+      display: inline-block;
+      transform: translateY(120%);
+      transition-property: transform;
+      transition-timing-function: $t-long-ease-out;
+
+      .dom-loaded .screen.active & {
+        transform: translateY(0);
+      }
+    }
+  }
+}
