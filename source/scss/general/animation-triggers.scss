@@ -1,5 +1,7 @@
 .animated-text {
   > span {
+    padding-top: 2rem;
+    margin-top: -2rem;
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;

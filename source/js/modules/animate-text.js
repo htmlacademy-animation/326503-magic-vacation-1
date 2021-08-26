@@ -1,5 +1,5 @@
 export default () => {
-  const animateTextLetters = function (elementSelector, duration, delay) {
+  const animateTextLetters = function (elementSelector, duration, delay, initDelay = 0) {
     function generateDelay(offset, index) {
       if (index % 3 === 2) {
         return offset;
@@ -24,7 +24,7 @@ export default () => {
       const calculatedDelay =
         generateDelay(delay, letterIndex) + (wordIndex * duration) / 2;
 
-      return `<span style="transition-duration: ${duration}ms; transition-delay: ${calculatedDelay}ms;">
+      return `<span style="transition-duration: ${duration}ms; transition-delay: ${calculatedDelay + initDelay}ms;">
                ${letter}
               </span>`;
     }
@@ -32,7 +32,7 @@ export default () => {
     const elementToAnimate = document.querySelector(elementSelector);
     elementToAnimate.classList.add(`animated-text`);
     elementToAnimate.innerHTML = elementToAnimate.innerHTML
-      .split(` `)
+      .split(`&nbsp;`)
       .map(
           (word, wordIndex) =>
             `<span>
@@ -48,4 +48,6 @@ export default () => {
   };
 
   animateTextLetters(`.intro__title`, 500, 70);
+  animateTextLetters(`.intro__date`, 400, 70, 800);
+
 };
