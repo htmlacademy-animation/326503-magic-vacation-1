@@ -8,12 +8,12 @@
 
     > span {
       display: inline-block;
-      transform: translateY(120%);
+      transform: translate3d(0, 120%, 0);
       transition-property: transform;
       transition-timing-function: $t-long-ease-out;
 
-      .dom-loaded .screen.active & {
-        transform: translateY(0);
+      .dom-loaded .screen.active:not(.screen--hidden) & {
+        transform: translate3d(0, 0, 0);
       }
     }
   }

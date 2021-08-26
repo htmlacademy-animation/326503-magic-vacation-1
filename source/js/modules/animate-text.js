@@ -1,5 +1,10 @@
 export default () => {
-  const animateTextLetters = function (elementSelector, duration, delay, initDelay = 0) {
+  const animateTextLetters = function (
+      elementSelector,
+      duration,
+      delay,
+      initDelay = 0
+  ) {
     function generateDelay(offset, index) {
       if (index % 3 === 2) {
         return offset;
@@ -49,5 +54,8 @@ export default () => {
 
   animateTextLetters(`.intro__title`, 500, 70);
   animateTextLetters(`.intro__date`, 400, 70, 800);
-
+  animateTextLetters(`.slider__item-title`, 400, 70);
+  animateTextLetters(`.prizes__title`, 400, 70);
+  animateTextLetters(`.rules__title`, 400, 70);
+  animateTextLetters(`.game__title`, 400, 70);
 };
