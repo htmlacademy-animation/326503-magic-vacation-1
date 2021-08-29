@@ -317,15 +317,8 @@
   .form__field {
     opacity: 0;
     width: 0;
-    animation: growInWidthResult 0.4s 0.9s forwards;
-
-    @media (max-width: $tablet) and (orientation: portrait) {
-      animation-name: growInWidthResultMobile;
-    }
-
-    @media (max-width: $mobile) and (orientation: landscape) {
-      animation-name: growInWidthResultLandscape;
-    }
+    transition: width 0.4s, opacity 0.4s;
+    transition-delay: 0.9s;
 
     &::placeholder {
       color: transparent;
@@ -334,6 +327,21 @@
     }
 
     .screen--result.screen--show & {
+      opacity: 1;
+      width: calc(100% - 31rem);
+
+      @media (max-width: $tablet) and (orientation: portrait) {
+        width: calc(100% - 5rem);
+      }
+
+      @media (max-width: $tablet) and (orientation: landscape) {
+        width: calc(100% - 9rem);
+      }
+
+      @media (max-width: $mobile) and (orientation: landscape) {
+        width: calc(100% - 5rem);
+      }
+
       &::placeholder {
         color: #747575;
       }
@@ -422,7 +430,7 @@
   }
 
   100% {
-    transform: rotate(0) translate3d(0);
+    transform: rotate(0) translate3d(0, 0, 0);
     opacity: 1;
   }
 }
@@ -507,41 +515,5 @@
   100% {
     opacity: 1;
     transform: rotate(0);
-  }
-}
-
-@keyframes growInWidthResult {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-
-  100% {
-    width: calc(100% - 31rem);
-    opacity: 1;
-  }
-}
-
-@keyframes growInWidthResultMobile {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-
-  100% {
-    width: calc(100% - 5rem);
-    opacity: 1;
-  }
-}
-
-@keyframes growInWidthResultLandscape {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-
-  100% {
-    width: calc(9rem + 2rem);
-    opacity: 1;
   }
 }
