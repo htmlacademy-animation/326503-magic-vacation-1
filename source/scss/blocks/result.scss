@@ -61,6 +61,16 @@
   height: 100%;
   margin: 0 auto;
 
+  @media (max-width: $tablet) and (orientation: portrait) {
+    width: 180%;
+    margin-bottom: 3rem;
+    margin-left: 5rem;
+  }
+
+  @media (max-width: $tablet) and (orientation: landscape) {
+    width: 51%;
+  }
+
   > .result__victory-img-part {
     position: absolute;
     z-index: 5;
@@ -71,15 +81,13 @@
       width: 37%;
       left: 16%;
       bottom: 17%;
-      transform: rotate(0) translateY(0);
-      // animation: flamingo-flight 3s 0.5s ease-in-out infinite;
       z-index: 5;
     }
 
     &--suitcase {
       width: 51%;
       left: 19%;
-      bottom: 16%;
+      // bottom: 16%;
       z-index: 4;
     }
 
@@ -102,6 +110,38 @@
       bottom: 16%;
       width: 42%;
       z-index: 2;
+    }
+  }
+
+  .screen--result.screen--show & {
+    > .result__victory-img-part {
+      &--flamingo {
+        animation: flamingo-fadeup 0.5s ease-out,
+          flamingo-flight 2s ease-in-out 0.5s infinite;
+      }
+
+      &--suitcase {
+        bottom: -20%;
+        animation: case-scale-up 0.7s ease-out forwards;
+      }
+
+      &--leaf-blue-1 {
+        opacity: 0;
+        transform-origin: 0 50%;
+        animation: leaf-right-swing 2s ease-in-out 0.4s forwards;
+      }
+
+      &--leaf-blue-2 {
+        opacity: 0;
+        transform-origin: 100% 50%;
+        animation: leaf-left-swing 2.2s ease-in-out 0.4s forwards;
+      }
+
+      &--leaf-green {
+        opacity: 0;
+        transform-origin: 0 50%;
+        animation: leaf-right-swing 2s ease-in-out 0.5s forwards;
+      }
     }
   }
 }
@@ -263,6 +303,42 @@
 
 .result__form {
   margin-top: auto;
+
+  .form__button {
+    color: transparent;
+    animation: nameFadeIn 0.3s 0.9s forwards;
+
+    &:before {
+      opacity: 0;
+      animation: fadeIn 0.4s 0.7s forwards;
+    }
+  }
+
+  .form__field {
+    opacity: 0;
+    width: 0;
+    animation: growInWidthResult 0.4s 0.9s forwards;
+
+    @media (max-width: $tablet) and (orientation: portrait) {
+      animation-name: growInWidthResultMobile;
+    }
+
+    @media (max-width: $mobile) and (orientation: landscape) {
+      animation-name: growInWidthResultLandscape;
+    }
+
+    &::placeholder {
+      color: transparent;
+      transition: color 0.3s;
+      transition-delay: 1.2s;
+    }
+
+    .screen--result.screen--show & {
+      &::placeholder {
+        color: #747575;
+      }
+    }
+  }
 }
 
 .result--trip,
@@ -327,10 +403,145 @@
   }
 
   50% {
-    transform: rotate(-6deg) translateY(8%);
+    transform: rotate(5deg) translateY(3%);
+  }
+
+  50% {
+    transform: rotate(-3deg) translateY(8%);
   }
 
   100% {
     transform: rotate(0) translateY(0);
+  }
+}
+
+@keyframes flamingo-fadeup {
+  0% {
+    transform: rotate(-30deg) translate3d(-30%, 100%, 0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotate(0) translate3d(0);
+    opacity: 1;
+  }
+}
+
+@keyframes case-scale-up {
+  0% {
+    transform: scale(0);
+    bottom: -20%;
+  }
+
+  70% {
+    transform: scale(1);
+    bottom: 18%;
+  }
+
+  100% {
+    transform: scale(1);
+    bottom: 16%;
+  }
+}
+
+@keyframes leaf-right-swing {
+  0% {
+    opacity: 0;
+    transform: rotate(-20deg);
+  }
+
+  17% {
+    opacity: 1;
+    transform: rotate(15deg);
+  }
+
+  34% {
+    transform: rotate(-6deg);
+  }
+
+  51% {
+    transform: rotate(3deg);
+  }
+
+  68% {
+    transform: rotate(-4deg);
+  }
+
+  85% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0);
+  }
+}
+
+@keyframes leaf-left-swing {
+  0% {
+    opacity: 0;
+    transform: rotate(20deg);
+  }
+
+  17% {
+    opacity: 1;
+    transform: rotate(-15deg);
+  }
+
+  34% {
+    transform: rotate(6deg);
+  }
+
+  51% {
+    transform: rotate(-3deg);
+  }
+
+  68% {
+    transform: rotate(4deg);
+  }
+
+  85% {
+    transform: rotate(-2deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0);
+  }
+}
+
+@keyframes growInWidthResult {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: calc(100% - 31rem);
+    opacity: 1;
+  }
+}
+
+@keyframes growInWidthResultMobile {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: calc(100% - 5rem);
+    opacity: 1;
+  }
+}
+
+@keyframes growInWidthResultLandscape {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: calc(9rem + 2rem);
+    opacity: 1;
   }
 }
