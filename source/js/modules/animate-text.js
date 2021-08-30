@@ -3,7 +3,8 @@ export default () => {
       elementSelector,
       duration,
       delay,
-      initDelay = 0
+      initDelay = 0,
+      ignoreSpaces = false
   ) {
     function generateDelay(offset, index) {
       if (index % 3 === 2) {
@@ -37,23 +38,23 @@ export default () => {
     const elementToAnimate = document.querySelector(elementSelector);
     elementToAnimate.classList.add(`animated-text`);
     elementToAnimate.innerHTML = elementToAnimate.innerHTML
-      .split(`&nbsp;`)
+      .split(ignoreSpaces ? `&nbsp;` : ` `)
       .map(
           (word, wordIndex) =>
             `<span>
               ${word
-                .split(``)
-                .map((letter, letterIndex) =>
-                  createLetterElement(letter, letterIndex, wordIndex)
-                )
-                .join(``)}
+            .split(``)
+            .map((letter, letterIndex) =>
+              createLetterElement(letter, letterIndex, wordIndex)
+            )
+            .join(``)}
             </span>`
       )
       .join(` `);
   };
 
   animateTextLetters(`.intro__title`, 500, 70);
-  animateTextLetters(`.intro__date`, 400, 70, 800);
+  animateTextLetters(`.intro__date`, 400, 70, 800, true);
   animateTextLetters(`.slider__item-title`, 400, 70);
   animateTextLetters(`.prizes__title`, 400, 70);
   animateTextLetters(`.rules__title`, 400, 70);
