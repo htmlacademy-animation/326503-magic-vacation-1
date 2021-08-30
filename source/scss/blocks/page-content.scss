@@ -11,6 +11,9 @@
 }
 
 .screen--prizes.screen--hidden.active {
+  display: block;
+  position: absolute;
+  
   &~ .page-content__flooding {
      bottom: 0;
   }

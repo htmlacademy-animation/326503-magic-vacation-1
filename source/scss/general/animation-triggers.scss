@@ -1,0 +1,20 @@
+.animated-text {
+  > span {
+    padding-top: 2rem;
+    margin-top: -2rem;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+
+    > span {
+      display: inline-block;
+      transform: translate3d(0, 120%, 0);
+      transition-property: transform;
+      transition-timing-function: $t-long-ease-out;
+
+      .dom-loaded .screen.active:not(.screen--hidden) & {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+}
