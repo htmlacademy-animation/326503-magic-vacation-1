@@ -302,6 +302,30 @@
         width: 100%;
         background-color: $c-purple;
       }
+
+      body.slide1 & {
+        color: $c-dark;
+
+        &::after {
+          background-color: $c-dark;
+        }
+      }
+
+      body.slide2 & {
+        color: $c-lightblue;
+
+        &::after {
+          background-color: $c-lightblue;
+        }
+      }
+
+      body.slide3 & {
+        color: $c-blue;
+
+        &::after {
+          background-color: $c-blue;
+        }
+      }
     }
   }
 }
