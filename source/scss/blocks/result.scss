@@ -413,6 +413,10 @@
     @media (max-width: $mobile) and (orientation: landscape) {
       width: 45rem;
     }
+
+    svg {
+      overflow: visible;
+    }
   }
 }
 
